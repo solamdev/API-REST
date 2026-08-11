@@ -9,7 +9,7 @@ config()
 const app = express()
 const port = 3000
 app.use(express.json());
-app.use(cors({origin: "https://solamdev.github.io/site-de-corrigir-texto/"}));
+app.use(cors());
 const genAI = new GoogleGenerativeAI (process.env.TOKEN)
 
 
