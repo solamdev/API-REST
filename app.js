@@ -12,7 +12,7 @@ app.use(cors())
 const genAI = new GoogleGenerativeAI (process.env.TOKEN)
 
 
-app.post('/api/chat', async (req, res) => {
+app.post('/chat', async (req, res) => {
   try{
     const {texto} = req.body
     const {agr} = req.body
