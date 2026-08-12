@@ -7,14 +7,12 @@ import  cors  from "cors"
 
 config()
 const app = express()
-const port = 3000
 app.use(express.json());
 app.use(cors())
 const genAI = new GoogleGenerativeAI (process.env.TOKEN)
 
 
-app.post('/chat', async (req, res) => {
-  const dataInicial = new Date()
+app.post('/api/chat', async (req, res) => {
   try{
     const {texto} = req.body
     const {agr} = req.body
@@ -43,10 +41,6 @@ app.post('/chat', async (req, res) => {
     const response =  result.response
     const respottext = response.text()
     res.json({msg: respottext})
-    console.log(respottext)
-    const datafinal = new Date()
-    const tempo = datafinal - dataInicial
-    console.log(tempo/1000," segundos")
     
   }
   catch (error){
@@ -56,7 +50,4 @@ app.post('/chat', async (req, res) => {
     }
   })
   
-  app.listen(port ,() =>{
-    console.log(`Servidor rodando em http://localhost:${port}`)
-  })
-
+ export default app
